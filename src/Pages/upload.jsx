@@ -5,6 +5,8 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import Design from '../components/design';
 
 const Upload = () => {
+    const height = 'h-[300px]'
+
     return (
         <>
 
@@ -66,8 +68,8 @@ const Upload = () => {
 
 
             <div className='min-[770px]:hidden z-[1000px]'>
-                <div className='mb-10 h-[300px] bg-gradient-to-b from-green-400 to-slate-900 to-80% rounded-b-xl flex justify-center items-center'>
-                    <div className='flex flex-col gap-3 items-center'>
+                <div className='mb-5 h-[300px] bg-gradient-to-b from-green-400 to-slate-900 to-80% rounded-b-xl flex justify-center items-center'>
+                    <div className='flex flex-col gap-3 items-center z-10'>
                         <h2 className='text-poppins text-slate-100 text-5xl hover:cursor-pointer max-[1000px]:text-4xl'>
                             <Link to='/'>VunaPQ</Link>
                         </h2>
@@ -103,11 +105,13 @@ const Upload = () => {
                     </button>
                 </div>
             </div>
-            <div>
-                <div className="z-[-10px] min-[770px]:hidden w-full h-[300px] absolute top-0 left-0">
-                    <Design />
-                </div>
+
+
+
+            <div className="z-[-10px] min-[770px]:hidden w-full absolute top-0 left-0">
+                <Design height={height} />
             </div>
+
 
         </>
 

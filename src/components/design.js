@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
-const Design = () => {
+const Design = ({height}) => {
   const particlesInit = useCallback(async (engine) => {
     // console.log(engine);
     await loadFull(engine);
@@ -13,9 +13,9 @@ const Design = () => {
   // }, []);
 
   return (
-    <div className="w-full h-full">
+    <div className={height}>
       <Particles
-        className="w-full h-[550px]"
+        className={height}
         id="tsparticles"
         init={particlesInit}
         // loaded={particlesLoaded}
