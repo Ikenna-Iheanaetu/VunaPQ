@@ -6,11 +6,11 @@ const FileList = ({ files, setFiles }) => {
         setFiles(files.filter(file => file.name !== filename))
     }
     console.log(files);
-
+   
     return (
         <>
             <ul className='flex flex-col gap-4'>
-                <h3>{files.length > 0 ? 'No Chosen Files' : 'Chosen Files'}</h3>
+                <h3  className={files.length() > 0 ? 'text-green-500' : 'text-red-600'}>{files.length() > 0 ? 'Chosen Files' : 'NoChosen Files'}</h3>
                 {files && files.map( file => (
                     <div className='flex justify-between  items-center p-4 rounded-md border-[1px] border-black' key={file.name}>
                         <li className='inline-block whitespace-nowrap text-ellipsis overflow-hidden pl-2'>{file.name}</li>
