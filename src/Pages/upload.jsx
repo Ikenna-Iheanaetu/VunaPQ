@@ -130,7 +130,7 @@ const Upload = () => {
                     <div className='col-span-6'>
                         <FileList files={files} setFiles={setFiles} />
                     </div>
-                    <button className='flex justify-center mt-9 gap-2 border-[1px] border-gray-900 p-4 rounded-md hover:bg-black hover:first:text-white hover:last:text-white'>
+                    <button className='flex justify-center mt-4 gap-2 border-[1px] border-gray-900 p-4 rounded-md hover:bg-black hover:first:text-white hover:last:text-white'>
                         <IoCloudUploadOutline className='text-2xl' />
                         <p>Submit</p>
                     </button>
