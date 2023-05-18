@@ -31,7 +31,6 @@ const Upload = () => {
         const file = event.target.files[0]
         setFiles([...files, file])
     }
-    console.log(files);
 
     return (
         <>

@@ -5,14 +5,15 @@ const FileList = ({ files, setFiles }) => {
     const filterFiles = (filename) => {
         setFiles(files.filter(file => file.name !== filename))
     }
+    console.log(files);
 
     return (
         <>
             <ul className='flex flex-col gap-4'>
-                <h3>{files > 0 ? 'No Chosen Files' : 'Chosen Files'}</h3>
+                <h3>{files ? 'No Chosen Files' : 'Chosen Files'}</h3>
                 {files && files.map( file => (
                     <div className='flex justify-between  items-center p-4 rounded-md border-[1px] border-black' key={file.name}>
-                        <li className='inline-block whitespace-nowrap text-ellipsis overflow-hidden'>{file.name}</li>
+                        <li className='inline-block whitespace-nowrap text-ellipsis overflow-hidden pl-2'>{file.name}</li>
                         <HiOutlineTrash className='text-2xl  hover:cursor-pointer ' onClick={() => filterFiles(file.name)} />
                     </div>
                 ))}
