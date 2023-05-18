@@ -14,7 +14,7 @@ const FileList = ({ files, setFiles }) => {
                 {files && files.map( file => (
                     <div className='flex justify-between  items-center p-4 rounded-md border-[1px] border-black' key={file.name}>
                         <li className='inline-block whitespace-nowrap text-ellipsis overflow-hidden pl-2'>{file.name}</li>
-                        <HiOutlineTrash className='text-2xl  hover:cursor-pointer ' onClick={() => filterFiles(file.name)} />
+                        <HiOutlineTrash className='text-[27.5px]  hover:cursor-pointer ' onClick={() => filterFiles(file.name)} />
                     </div>
                 ))}
             </ul>
