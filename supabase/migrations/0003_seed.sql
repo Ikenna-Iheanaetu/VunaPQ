@@ -5,9 +5,9 @@ insert into schools (id, name) values
   ('00000000-0000-0000-0000-000000000001','Veritas University, Abuja')
 on conflict (id) do nothing;
 
-insert into departments (id, school_id, name, code) values
+insert into departments (id, school_id, name, code, num_levels) values
   ('00000000-0000-0000-0000-0000000000a1',
-   '00000000-0000-0000-0000-000000000001','Software Engineering','SEN')
+   '00000000-0000-0000-0000-000000000001','Software Engineering','SEN', 4)
 on conflict (id) do nothing;
 
 insert into sessions (id, label) values

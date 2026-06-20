@@ -16,6 +16,13 @@ returns boolean language sql security definer stable set search_path = public as
   );
 $$;
 
+create or replace function public.is_super_admin()
+returns boolean language sql security definer stable set search_path = public as $$
+  select exists (
+    select 1 from profiles where id = auth.uid() and role = 'super_admin'
+  );
+$$;
+
 -- ===== enable RLS =====
 alter table schools          enable row level security;
 alter table departments      enable row level security;
@@ -33,6 +40,14 @@ create policy read_schools     on schools     for select to authenticated using 
 create policy read_departments on departments for select to authenticated using (true);
 create policy read_sessions    on sessions    for select to authenticated using (true);
 create policy read_courses     on courses     for select to authenticated using (true);
+
+-- departments are managed by super admins (name, code, number of levels)
+create policy write_departments_ins on departments for insert to authenticated
+  with check (is_super_admin());
+create policy write_departments_upd on departments for update to authenticated
+  using (is_super_admin()) with check (is_super_admin());
+create policy write_departments_del on departments for delete to authenticated
+  using (is_super_admin());
 
 -- courses are user-managed: reps (for their dept+level) and admins create/edit them
 create policy write_courses_ins on courses for insert to authenticated

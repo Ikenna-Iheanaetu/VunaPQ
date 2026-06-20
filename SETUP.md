@@ -47,3 +47,18 @@ pnpm dlx supabase gen types typescript --project-id <your-ref> > lib/database.ty
 pnpm install
 pnpm dev
 ```
+
+## 7. Deploy to Vercel
+1. Push the repo to GitHub and import it in Vercel (framework auto-detected as Next.js).
+2. Project Settings → **Environment Variables**: add all four from step 2
+   (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
+   `SUPABASE_SERVICE_ROLE_KEY`, `ANTHROPIC_API_KEY`).
+3. In Supabase → Authentication → **URL Configuration**, add your Vercel URL to
+   **Site URL** and **Redirect URLs** (e.g. `https://your-app.vercel.app/auth/callback`)
+   so magic links resolve in production.
+4. Deploy. Re-run the verification flow (sign up → onboard → browse → upload →
+   solve) against the live URL.
+
+## 8. Before announcing
+Seed **5–10 real past papers** and lock in **2–3 committed reps** first — an empty
+app gets one visit. Keep the "AI · unverified" badge; let reps verify solutions.

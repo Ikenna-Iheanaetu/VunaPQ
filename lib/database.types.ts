@@ -20,9 +20,9 @@ export interface Database {
         Relationships: [];
       };
       departments: {
-        Row: { id: string; school_id: string | null; name: string; code: string } & Timestamped;
-        Insert: { id?: string; school_id?: string | null; name: string; code: string; created_at?: string };
-        Update: Partial<{ id: string; school_id: string | null; name: string; code: string; created_at: string }>;
+        Row: { id: string; school_id: string | null; name: string; code: string; num_levels: number } & Timestamped;
+        Insert: { id?: string; school_id?: string | null; name: string; code: string; num_levels?: number; created_at?: string };
+        Update: Partial<{ id: string; school_id: string | null; name: string; code: string; num_levels: number; created_at: string }>;
         Relationships: [];
       };
       sessions: {

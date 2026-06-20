@@ -18,6 +18,7 @@ create table departments (
   school_id uuid references schools(id) on delete cascade,
   name text not null,        -- 'Software Engineering'
   code text not null,        -- 'SEN'
+  num_levels int not null default 4 check (num_levels between 1 and 6), -- years: SEN = 4 (100-400)
   created_at timestamptz default now(),
   unique (school_id, code)
 );
@@ -30,7 +31,7 @@ create table sessions (              -- academic years
 create table courses (
   id uuid primary key default gen_random_uuid(),
   department_id uuid not null references departments(id) on delete cascade,
-  level int not null check (level in (100,200,300,400,500)),
+  level int not null check (level in (100,200,300,400,500,600)),
   semester semester_type not null,
   code text not null,                -- 'SEN402'
   title text not null,               -- 'Advanced Web (Spring Boot/JPA)'
@@ -45,7 +46,7 @@ create table profiles (
   full_name text default '',
   matric_no text unique,
   department_id uuid references departments(id),
-  current_level int check (current_level in (100,200,300,400,500)),
+  current_level int check (current_level in (100,200,300,400,500,600)),
   role user_role not null default 'student',
   created_at timestamptz default now()
 );
@@ -89,7 +90,7 @@ create table rep_assignments (       -- THIS is "the level account"
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references profiles(id) on delete cascade,
   department_id uuid not null references departments(id) on delete cascade,
-  level int not null check (level in (100,200,300,400,500)),
+  level int not null check (level in (100,200,300,400,500,600)),
   session_id uuid references sessions(id),
   status assignment_status not null default 'active',
   assigned_by uuid references profiles(id),
